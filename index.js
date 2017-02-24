@@ -61,36 +61,56 @@ class LifeCounter extends React.Component{
     }
 }
 
-class LifeCounterList extends React.Component{
+const LifeCounterList = ({lcList}) => {
+
+  const eiei = lcList.map((lc) => {
+    return (<LifeCounter player={lc} />)
+  });
+
+  return (<div className="box">{eiei}</div>);
+}
+
+class App extends React.Component{
+  constructor(props) {
+      super(props);
+      this.state = {amount: 2, lcList: [1, 2, 3, 4, 5, 6, 7, 8], currentlist : [1, 2]};
+  }
   render(){
     return (
+    <div id="page">
       <div>
           <center>
             <h1 className="title is-1">Life Counter</h1>
-            <LifeCounter player="1" />
-            <LifeCounter player="2" />
-            <LifeCounter player="3" />
-            <LifeCounter player="4" />
-            <LifeCounter player="5" />
+            <h3 className="title is-3">Player Amount</h3>
+              <p className="control playerSelect">
+                <span className="select is-large">
+                  <select id="amount"
+                    onChange={
+                      () => {
+                        var newAmount = document.getElementById('amount').value;
+                        this.setState({
+                          amount: newAmount,
+                          currentlist: this.state.lcList.slice(0, newAmount)
+                        });
+                      }
+                    }>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                  </select>
+                </span>
+              </p>
+              <LifeCounterList lcList={this.state.currentlist} />
           </center>
       </div>
+    </div>
     )
   }
 }
-
-
-class App extends React.Component{
-  render(){
-    return(
-      <div>
-        <div id="page">
-          <LifeCounterList />
-        </div>
-      </div>
-    )
-  }
-}
-
 
 
 ReactDOM.render(<App />, document.getElementById('main'));
