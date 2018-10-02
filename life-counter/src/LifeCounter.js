@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from "jquery";
+import 'bulma/css/bulma.css'
 
 class LifeCounter extends Component{
     state = {
@@ -10,6 +11,8 @@ class LifeCounter extends Component{
     buttonClickHandler = () => {
         var opt = $("#op" + this.state.playerid + " :selected").text();
         var newScore = this.state.score;
+
+        console.log(opt);
 
         /*Calculate value*/
         if(opt === '-'){
@@ -49,7 +52,7 @@ class LifeCounter extends Component{
                                 <option>+</option>
                             </select>
                         </span>
-                        <input className="input is-expanded is-large" type="text" id={ this.state.playerid }/>
+                        <input style={{width: "80%"}} className="input is-expanded is-large" type="text" id={ this.state.playerid }/>
                         <button className="button is-large is-primary" onClick={ this.buttonClickHandler }>OK               </button>
                     </p>
                 </div>

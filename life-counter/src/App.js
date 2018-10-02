@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LifeCounter from './LifeCounter';
+import 'bulma/css/bulma.css'
 import './App.css';
 
 class App extends Component {
@@ -14,8 +15,8 @@ class App extends Component {
       return (
         <div className="box">
           {
-            lcList.map((lc) => {
-              return <LifeCounter player={ lc } />
+            lcList.map((lc, idx) => {
+              return <LifeCounter key={ idx } player={ lc } />
             })
           }
         </div>
