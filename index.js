@@ -11,8 +11,8 @@ class LifeCounter extends React.Component{
         return (
             <div className="container">
             <div className="box">
-                <h2 className="title is-2">Player {this.props.player}</h2>
-                <h3 className="title is-3">Score: {this.state.score}</h3>
+                <h3 className="title is-2">Player {this.props.player}</h3>
+                <h4 className="title is-3">Score: {this.state.score}</h4>
 
                 {/*Change Value Form*/}
                 <p className="control has-addons has-addons-centered">
