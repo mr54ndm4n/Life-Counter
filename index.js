@@ -11,6 +11,7 @@ class LifeCounter extends React.Component{
         return (
             <div className="container">
             <div className="box">
+                <img src={"./images/player_" + this.props.player + ".png"} width="100" height="100"></img>
                 <h2 className="title is-2">Player {this.props.player}</h2>
                 <h3 className="title is-3">Score: {this.state.score}</h3>
 
