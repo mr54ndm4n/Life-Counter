@@ -1,5 +1,3 @@
-var player = 0;
-
 class LifeCounter extends React.Component{
 
     constructor(props) {
@@ -74,8 +72,20 @@ const LifeCounterList = ({lcList}) => {
 class App extends React.Component{
   constructor(props) {
       super(props);
-      this.state = {amount: 2, lcList: [1, 2, 3, 4, 5, 6, 7, 8], currentlist : [1, 2]};
+      this.state = {amount: 2, 
+        lcList: [1, 2, 3, 4, 5, 6, 7, 8], 
+        currentlist : [1, 2]
+    };
   }
+
+    //function that handles select change
+    onChange = (event) => {
+        this.setState({
+          amount: event.target.value,
+          currentlist: this.state.lcList.slice(0, event.target.value)
+        });
+      }
+
   render(){
     return (
     <div id="page">
@@ -85,23 +95,16 @@ class App extends React.Component{
             <h3 className="title is-3">Player Amount</h3>
               <p className="control playerSelect">
                 <span className="select is-large">
-                  <select id="amount"
-                    onChange={
-                      () => {
-                        var newAmount = document.getElementById('amount').value;
-                        this.setState({
-                          amount: newAmount,
-                          currentlist: this.state.lcList.slice(0, newAmount)
-                        });
-                      }
-                    }>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
+                  <select
+                    onChange={this.onChange}
+                    value={this.state.value}>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
                   </select>
                 </span>
               </p>
