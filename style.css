@@ -1,9 +1,70 @@
-.box {
-    margin-bottom: 20px;
+/* Document */
+
+body {
+    font-family: 'K2D', sans-serif;
 }
+
+/* Headings */
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
 h1 {
-    margin-bottom: 47px;
+    font-size: 3.5rem;
 }
+
+/* Container */
+
+.container {
+    max-width: 768px;
+}
+
+/* Cards */
+
+.card {
+    border-radius: 0;
+}
+
+/* Inputs */
+
+.input-group,
+.input-group-text,
+.form-control,
+.custom-select {
+    border-radius: 0 !important;
+}
+
+/* Buttons */
+
+.btn {
+    border-radius: 0;
+}
+
+/* Header */
+
+.heart {
+    display: none;
+}
+
+@media (min-width: 440px) {
+    .heart{
+        display: inline;
+    }
+}
+
+/* Player Amount Selector */
+
+.player-amount {
+    max-width: 320px;
+}
+
+/* Player Cards */
+
 .playerSelect {
   text-align: center;
+}
+
+.value-selector {
+    max-width: 320px;
 }
