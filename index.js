@@ -1,7 +1,6 @@
 var player = 0;
 
 class LifeCounter extends React.Component{
-
     constructor(props) {
         super(props);
         this.state = {score: 8000, playerid: ('player'+props.player)};
@@ -10,11 +9,11 @@ class LifeCounter extends React.Component{
     render(){
         return (
             <div className="container">
-            <div className="box">
-                <img src={"./images/player_" + this.props.player + ".png"} width="100" height="100"></img>
-                <h2 className="title is-2">Player {this.props.player}</h2>
-                <h3 className="title is-3">Score: {this.state.score}</h3>
 
+            <div className={`box player-${this.props.player}`}>
+            <img src={"./images/player_" + this.props.player + ".png"} width="50" height="50"></img>
+                <h2 className="title is-2 title-player">Player {this.props.player}</h2>
+                <h3 className="title is-3 score">Score: {this.state.score}</h3>
                 {/*Change Value Form*/}
                 <p className="control has-addons has-addons-centered">
                     <span className="select is-large">
@@ -82,7 +81,7 @@ class App extends React.Component{
       <div>
           <center>
             <h1 className="title is-1">Life Counter</h1>
-            <h3 className="title is-3">Player Amount</h3>
+            <h3 className="title is-4">Player Amount</h3>
               <p className="control playerSelect">
                 <span className="select is-large">
                   <select id="amount"
