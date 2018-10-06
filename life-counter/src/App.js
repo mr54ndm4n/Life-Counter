@@ -3,45 +3,67 @@ import LifeCounter from './LifeCounter';
 import 'bulma/css/bulma.css'
 import './App.css';
 
+const STARTLIFEPOINT = 8000
+
 class App extends Component {
   state = {
-    amount: 2,
-    lcList: [1, 2, 3, 4, 5, 6, 7, 8],
-    currentlist: [1, 2]
+    players: [
+      { id: 1, lifePoint: STARTLIFEPOINT },
+      { id: 2, lifePoint: STARTLIFEPOINT }
+    ]
+  }
+
+  selectNumOfPlayerHandler = (event) => {
+    const numOfPlayers = event.target.value;
+    const updatedPlayers = [];
+
+    for(let i = 1; i <= numOfPlayers; i++) {
+      updatedPlayers.push({
+        id: i,
+        lifePoint: STARTLIFEPOINT
+      })
+    }
+
+    this.setState({
+      players: updatedPlayers
+    })
+  }
+
+  scoreChangeHandler = (id) => {
+    return (score, operand) => {
+      const updatedPlayers = [ ...this.state.players ];
+    
+      if(operand === '+') {
+        updatedPlayers[id - 1].lifePoint += score;
+      }
+      else {
+        updatedPlayers[id - 1].lifePoint -= score;
+      }
+
+      this.setState({
+        players: updatedPlayers
+      });
+    }
   }
  
   render() {
-    const LifeCounterList = ({ lcList }) => {
-      return (
+    const lifeCounterList = (
         <div className="box">
           {
-            lcList.map((lc, idx) => {
-              return <LifeCounter key={ idx } player={ lc } />
-            })
+            this.state.players.map(player => <LifeCounter key={ player.id } playerId={ player.id } score = { player.lifePoint } submitScoreClicked={ this.scoreChangeHandler(player.id) } />)
           }
         </div>
       );
-
-    }
 
     return (
       <div id="page">
         <div>
             <center>
               <h1 className="title is-1">Life Counter</h1>
-              <h3 className="title is-3">Player Amount</h3>
+              <h3 className="title is-3">Number of Player</h3>
                 <p className="control playerSelect">
                   <span className="select is-large">
-                    <select id="amount"
-                      onChange={
-                        () => {
-                          var newAmount = document.getElementById('amount').value;
-                          this.setState({
-                            amount: newAmount,
-                            currentlist: this.state.lcList.slice(0, newAmount)
-                          });
-                        }
-                      }>
+                    <select id="amount" onChange={ this.selectNumOfPlayerHandler }>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -52,7 +74,7 @@ class App extends Component {
                     </select>
                   </span>
                 </p>
-                <LifeCounterList lcList={this.state.currentlist} />
+                {lifeCounterList}
             </center>
         </div>
       </div>
