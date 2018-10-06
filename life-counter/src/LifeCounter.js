@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from "jquery";
 import 'bulma/css/bulma.css'
 
 class LifeCounter extends Component{
