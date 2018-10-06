@@ -17,6 +17,7 @@ class LifeCounter extends Component{
         return (
             <div className="container">
                 <div className="box">
+                    <img style={{float: 'left'}} alt='player id' src={require("../assets/images/player_" + this.props.playerId + ".png")} width="100" height="100"></img>
                     <h2 className="title is-2">Player {this.props.playerId}</h2>
                     <h3 className="title is-3">Score: {this.props.score}</h3>
 
